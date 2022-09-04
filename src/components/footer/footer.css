@@ -1,0 +1,17 @@
+footer{
+    background: rgb(32, 32, 32);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+}
+.copyright{
+    text-align: center;
+    color: white;
+    font-size: 13px;
+}
+footer span{
+    color: #F2AA4CFF;
+    margin-left: 0.3rem;
+}

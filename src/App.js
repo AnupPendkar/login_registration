@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import Footer from './components/footer/Footer';
+import Navbar from './components/navbar/Navbar';
+import Login from './pages/login/Login';
+import Register from './pages/register/Register';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Welcome from './pages/Welcome';
+import { useState } from 'react';
+import {useSelector} from 'react-redux';
 
 function App() {
+  const user = useSelector(state=>state.user.isUser);
+  const [userData, setUserData] = useState([]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Navbar/>
+        <Routes>
+          <Route path='/' element={<Login/>}/>
+          <Route path='/register' element={<Register />}/>
+          {user && <Route path="/welcome" element={<Welcome />}/>}
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }
